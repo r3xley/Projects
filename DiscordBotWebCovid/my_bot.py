@@ -18,8 +18,7 @@ async def on_message(message):
     message_content = message.content.lower()
 
     if message.content.startswith(f'$hello'):
-        await message.channel.send('''Hello there! I\'m the fidgeting bot from RunPee. 
-    Sorry but I really need to go to the bathroom... Please read my manual by typing $help or $commands while I'm away.''')
+        await message.channel.send('''Please read my manual by typing $help or $commands while I'm away.''')
 
         
     if f'$search' in message_content:
@@ -32,7 +31,7 @@ async def on_message(message):
             for link in links:
              await message.channel.send(link)
         else:
-            await message.channel.send(no_result_message)
+            await message.channel.send(no_result_message) 
         
 print(dir(web_run))
 
@@ -40,4 +39,4 @@ print(dir(web_run))
 
 
 
-client.run('MTA0NzcwNDUwNDg4OTUwNzkyMQ.GmyDNw.sDZSbFt5WffzYR7m1I-3Vq_RkdtM0VVZNj2n_Y')
+client.run('MTA0NzcwNDUwNDg4OTUwNzkyMQ.GXOErB.v4PcN8oH-jofaOVQISu0rcOr5lQWue4C4Fv6b8')
