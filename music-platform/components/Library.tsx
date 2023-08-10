@@ -1,9 +1,28 @@
 "use client";
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
+import useUploadModal from "@/hooks/useUploadModal";
+import { Song } from "@/types";
+import MediaItem from "./MediaItem";
 
-const Library = () => {
+interface LiberaryProps {
+    songs: Song[];
+}
+
+const Library: React.FC<LiberaryProps> = ({
+    songs
+}) => {
+    const authModal = useAuthModal();
+    const uploadModal = useUploadModal();
+    const { user } = useUser();
     const onClick = () => {
+        if (!user) {
+            return authModal.onOpen();
+        }
+        //check for sub
+        return uploadModal.onOpen();
 
     };
 
@@ -54,7 +73,13 @@ const Library = () => {
             mt-4 
             px-3
             ">
-                List of Songs!
+                {songs.map((item) => (
+                    <MediaItem
+                        onClick={() => { }}
+                        key={item.id}
+                        data={item}
+                    />
+                ))}
 
             </div>
         </div>
